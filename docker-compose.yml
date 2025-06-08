@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  fiber-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "8083"  # Not exposed to host, only within Docker network
+    depends_on:
+      - redis
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8081:80"  # Only NGINX is exposed to host
+    depends_on:
+      - fiber-app
+    networks:
+      - app-network
+
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    expose:
+      - "6379"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

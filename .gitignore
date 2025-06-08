@@ -1,0 +1,52 @@
+# Go build outputs
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace files
+/go.sum
+vendor/
+
+# Redis logs or data files (if generated locally)
+*.rdb
+*.log
+*.pid
+*.dump
+
+# Temporary files and folders
+tmp/
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+
+# Editor-specific
+.vscode/
+.idea/
+
+# Air live reload files
+.air
+.air.toml
+
+# Logs
+*.log
+
+# Docker-related
+*.env
+.env.*
+.dockerignore
+
+# Build artifacts (if any)
+bin/
+dist/
+
+# Blocked IP log
+blocked_ips.log
+
+# Nginx runtime cache or socket files (in case added later)
+nginx/*.pid
+nginx/*.sock
